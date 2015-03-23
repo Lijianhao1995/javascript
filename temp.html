@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+	</head>
+
+	<body>
+		<script language="javascript" type="text/javascript">
+			var s="434";
+			s=Number(s);
+			s=s.toString(10);
+			var matrix=[[1,2,3],[4,5,6],[7,8,9]];
+			console.log(matrix[2][0]);
+			//in运算符的应用
+			var point={x:1,y:1};
+			console.log(Boolean("toString" in point));  
+			//instanceof的应用
+			var d=new Date();
+			console.log(d instanceof Date);
+			//typeof的用法
+			var d=1234;
+			var s=(typeof d=="string"?"'"+d+"'":d);
+			console.log(s);
+			console.log(typeof s);
+		</script>
+		<!--
+        	作者：lijianhao1995@126.com
+        	时间：2015-02-04
+        	描述：递归的调用
+        -->
+		<form name="form1" method="post">
+			<input type="text" name="text" value="..." />
+			<input type="button" name="button" value="fun1" onclick="fun(text.value)" />
+			<input type="button" name="button" value="fun2" onclick="fun2()" />
+			<p></p>
+			答案是:
+			<input type="text" name="anwser" value="..." />
+			<script type="text/javascript" language="javascript">
+				function fun1(n){
+					if(n<=1) return 1;
+					return n*fun1(n-1);
+				}
+				function fun(n){
+					
+					document.form1.anwser.value=(fun1(n));
+				}
+			</script>
+			<script language="javascript" type="text/javascript">
+				var o={x:1,y:2,z:3};
+				var a=[],i=0;
+				console.log(o.x);
+				for(a[i++] in o){};
+				for(i in a){
+				console.log(i);
+				}
+			</script>
+		</form>
+		<!--
+        	作者：lijianhao1995@126.com
+        	时间：2015-02-06
+        	描述： try catch的使用 -->
+		<script language="javascript" type="text/javascript">
+			var a="beijing";
+			try{
+				if(a<=0) throw new Error("x mustn't <0");
+				else if(typeof(a)=="string") throw new Error("x must be a number");
+				else console.log(a);
+			}catch(e){
+				console.log(e);
+				}
+				finally{
+					console.log(a)
+				}
+		</script>
+		<script language="javascript" type="text/javascript">
+			//with的使用
+			with(document.form1){
+				//text.value="123"
+			}
+			//关联数组
+			var customer={address0:"beijing",address1:"shanghai",address2:"guangzhou"}
+			var cus="";
+			for(var i=0;i<=2;i++){
+				cus=cus+customer["address"+(i)]+' ';
+			}
+			console.log(cus);
+			function fun2(){
+			var x=document.form1.text.value;
+			x=customer[x];
+			document.form1.anwser.value=x;
+			}
+			var u={r:1};
+			var c=Object.create(u);
+			
+			//has hasOwnPorperty的用法
+			console.log(c.r);
+			var o={x:1,y:2,z:3};
+			console.log(o.hasOwnProperty("x"));
+			for(var p in o)
+			{
+				console.log(p);console.log(o[p]);
+			}
+			var property=[];
+			
+			//Object.keys()的使用
+			property=Object.keys(o);
+			console.log(property[0]);
+			
+			//set get的使用 以及fucname:的使用
+			var ran={
+					thisIsAFuction:function(n){
+					return n*n;
+				}
+			}
+			console.log(ran.thisIsAFuction(9));
+			
+			//Object.defineProperty的使用
+			Object.defineProperty(o,"x",{value:2});
+			console.log(o.x);
+			console.log(Object.getOwnPropertyDescriptor(o,"x"));
+			
+			//Object.seal() Objext.freeze()的使用
+			//o=Object.seal(o);//不可添加删除属性 可以修改
+			//console.log(Object.isSealed(o));
+			//o=Object.freeze(o);//不可能修改属性
+			//console.log(Object.isFrozen(o));
+			
+			//JSON.stringify JSON.parse
+			var s=JSON.stringify(o);
+			console.log(s);
+			
+			var p=JSON.parse(s);
+			console.log(p);//p是o的深度拷贝
+			//数组添加减少元素push pop unshift() shift();
+			var arr=[];
+			arr.push("a","b","c");
+			arr.unshift("d");
+			arr.shift();
+			console.log(arr);
+			var data=[1,9,7,6,10];
+			var sum=0;
+			//foreach的使用
+			data.forEach(function(m){
+				sum=sum+m;
+			});
+			console.log(sum);
+			//join split reverse sort slice splice
+			var arrstring=data.join("我是分隔符");
+			console.log(arrstring);
+			var arr_=[];
+			arr_=arrstring.split("我是分隔符");
+			console.log(arr_);//split分割出来的是字符串
+			data.reverse();
+			console.log(data);
+			data.sort();//默认按字符表顺序,不是数字大小
+			console.log(data);
+			data.sort(function(a,b){return a-b;});//第一参数应该在前,则返回一个小于零的值
+			console.log(data);
+			data=data.concat([4,11],[8,3],37);//data后加入4,11,8,3,37这几个元素
+			console.log(data);
+			var data1=data.slice(3);console.log(data1);//一个参数从位置n(从0计数)到最后
+			var data2=data.slice(2,4);console.log(data2);//两个参数从位置a到位置b之前的内容
+			var data3=data.splice(6);//一个参数会删除从位置n到最后的所有
+			var data4=data.splice(3,4)//从第n个位置删除m个
+			var data5=data.splice(2,0,56,43);//在第二个位置删除0个元素,插入56,43两个元素
+			var data6=data.splice(2,2,36,60,90);//会直接插入数组[34,62]和90,返回删除的两个元素组成的数组,注意:concat会插入数组的元素
+			
+			//ecmascript的数组方法:forEach map filter every some
+			data.forEach(function(v,i,a){a[i]=v+1;})//v为元素数值,i为索引,a为数组本身
+			var data6=data.map(function(x){return x*x;});//如data为稀疏数组,返回的仍旧是稀疏数组
+			var data7=data.filter(function(x){//实现从数组中挑选出质数
+				var bool=true;
+				for(var i=2;i<=Math.sqrt(x);i++)
+				{
+					if(x==2) {bool=true;break;}
+					if(x%i==0) {bool=false;break;}
+				}
+				return bool;
+			});
+			console.log(data6);
+			console.log(data7);
+			
+			var bool=data.every(function(x){return x*2>=10;});//所有元素值符合时返回true 否则false
+			var bool1=data.some(function(x){return x<100;});//与every相反,所有都不符合时返回false 否则true
+			
+			var sum=data.reduce(function(a,b){return a+b*b});//返回乘方和
+			
+			var position1=data.indexOf(33);//返回第一个值为33元素的位置,没有则返回-1
+			var positino2=data.lastIndexOf(33)//从后向前返回第一个值为33的元素的位置 没有返回-1
+			var str="I love Beijing TianAnmen";
+			
+			var s="javascript";
+			console.log(Array.prototype.filter.call(s,function(x){
+					return x.match(/[^aeiou]/);}));
+			//arguments数组应用举例
+			function min(){
+				var min=Number.POSITIVE_INFINITY;
+				for(var i=0;i<arguments.length;i++)
+				{
+					console.log(arguments[i]);
+					if(arguments[i]<=min) min=arguments[i];
+				}
+				return min;
+			}
+			console.log(min(3,6,2,5,46,3));
+			aFunction.property1=0
+			function aFunction(n){
+				aFunction.property1=aFunction.property1+n;
+				return aFunction.property1;
+			}
+		</script>
+
+		</script>
+	</body>
+
+</html>
