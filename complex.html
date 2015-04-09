@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script language="JavaScript" type="text/javascript">
+			function complex(real,imaginary)//创建类
+			{
+				this.real=real;
+				this.imaginary=imaginary;
+			}
+			complex.prototype.toString=function(){
+				return this.real+"+"+this.imaginary+"j";
+				
+			}
+			complex.prototype.add=function(that){
+				var tempc=new complex(this.real+that.real,this.imaginary+that.imaginary);
+				return tempc;
+			}
+			complex.prototype.compare=function(that){
+				return this.real==that.real&&this.imaginary==that.imaginary;
+			}
+			var c1=new complex(3,4);
+			complex.polar=function(r,theta){
+				return new complex(r*Math.cos(theta),r*Math.sin(theta));
+			}
+			var c2=new complex(3,4);
+			console.log(c1.compare(c2));
+			</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form name="form1" method="post" id="myForm">
+			<p>得不到的永远在骚动</p>
+			<p>被偏爱的都有恃无恐</p>
+		</form>
+		<script>
+			function textContent(e){
+				var child,type,s="";
+				for(child=e.firstChild;child!=null;child=child.nextSibling){
+					type=child.nodeType;
+					if (type===3||type===4)
+						s=s+child.nodeValue;
+					else if(type===1)
+						s=s+textContent(child);
+				}
+				return s;
+			}
+			var e=document.getElementById("myForm");
+			var s="s";
+			alert(s);
+			s=textContent(e);console.log(s);
+			alert(s);
+		</script>
+	</body>
+
+</html>

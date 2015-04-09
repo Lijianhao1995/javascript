@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<p></p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<p>what the hell is that thing to do with in your pocket</p>
+		<img src="win8.jpg" height="80%" width="80%"/>
+		<script>
+			function automaticrolling(n){
+				var d=window.document;
+				d.documentElement.scrollTop=n;
+				setTimeout(function(){
+					automaticrolling(n+1);
+				},100);
+			}
+			automaticrolling(0);
+			/*与上面函数功能类似的实现
+			 * setInterval(function(){
+				scollBy(1,1)
+			},100)*/
+			function showImage(){
+				var objimg=document.getElementsByTagName("img")[0];
+				objimg.scrollIntoView();
+			}
+			setTimeout(showImage,1000);
+			function getScrollOffsets(w){
+				w=w||window;
+				return {x:w.pageXOffset,y:w.pageYOffset};
+			}
+			function showPosition(){
+				var p={};
+				p=getScrollOffsets();
+				var obj=document.getElementsByTagName("p")[0];
+				obj.textContent="x:"+p.x+"y:"+p.y;
+			}
+			setInterval(showPosition,100);
+			
+			var pic=document.getElementsByTagName("img")[0];
+			var box={};
+			box=pic.getBoundingClientRect();
+			document.getElementsByTagName("p")[1].textContent=(box.bottom-box.top)/*box.heigth*/+"*"+(box.right-box.left)/*box.width*/;
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>sample document</title>
+	</head>
+	<body>
+		<h1>An HTML Document</h1>
+		<p>this is a <i>simple</i>document</p>
+		<p>this is a <i>simple</i>document</p>
+		<script>
+			var para=document.getElementsByTagName("p")[0];
+			var text=para.textContent;
+			function changeTextContent(para){
+				para.textContent="hahahha";
+			}
+			var n=5;
+			function konckdown(n){
+				var para2=document.getElementsByTagName("p")[1];
+				para2.textContent=n.toString();
+				setTimeout(function(){
+					konckdown(n-1);
+				},1000);//匿名函数包装法解决不能带参数的问题 
+			}
+			konckdown(5);
+			setTimeout("changeTextContent(para)",5000);//将函数加引号!!
+		</script>
+	</body>
+	 
+</html>

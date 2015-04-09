@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	<form name="form1" method="post" >
+	<input type="text" name="x" value="第一个参数" />
+	<input type="text" name="y" value="第二个参数" /><p></p>
+	<input type="text" name="functions" value="函数体"  /><p></p>
+	<input type="button" name="button1" value="就这样" onclick="doit()" />
+	<input type="text" name="result" value="这里显示结果" />
+</form>
+<script language="JavaScript" type="text/javascript">
+	function doit(){
+		var x=Number(document.form1.x.value);
+		var y=Number(document.form1.y.value);
+		var fstr=document.form1.functions.value;
+		var f=new Function("x","y",fstr);
+		//alert(f(x,y));
+		document.form1.result.value=f(x,y);
+	}
+</script>
+	</body>
+</html>

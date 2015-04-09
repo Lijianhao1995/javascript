@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<form action="" method="post">
+<input type="button" ondblclick="fun1()" value="button" name="but"/>
+</form>
+<script language="javascript" type="text/javascript">
+function fun1(){
+var str="lijianhao@126.com";
+var index=str.indexOf('@');
+document.write(str[index]);//相当于php中的echo
+var subs=str.substr(4,5);
+document.write(subs);
+var data="1995-03-20";
+var arr=data.split("-");
+document.write("<br>");
+for(i=0;i<=arr.length-1;i++)
+{
+	document.write(i+"  "+arr[i]+"<br>");
+	}
+document.write("<br>hahahhaha<br>");
+window.open("http://jwxt.bupt.edu.cn","baidu");
+}
+
+</script>
+<form name="form1" method="post">
+<input name="button1" type="button" value="save" id="button1"/>
+<div id="clolck"></div>
+<script language="javascript" type="text/javascript">
+var b="Beat123 LA";
+b=b.replace(/\w{4}\d{3}[\040]{1}[LA]{2}/,"boston sucks");
+var now=new Date();
+now.setFullYear("2008");
+var i=1;
+function fun2(clock){
+i++;
+clock.innerHTML="now:"+i;
+}
+window.onload=function(){window.SetInterval(fun2(),1000);}
+</script>
+</form>
+</body>
+</html>

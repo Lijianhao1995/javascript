@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script language="JavaScript" type="text/javascript">
+			function person(name,age,spouse){
+				this.name=name;
+				this.age=age;
+				if(spouse==null||spouse==undefined)
+					this.spouse="";
+					else
+					this.spouse=spouse;
+			}
+			person.prototype={
+				marrige:function(that){
+					this.spouse=that;
+					that.spouse=this;
+				}
+			}
+			var person1=new person("lijianhao",20);
+			var person2=new person("zhaonian",18);
+			person1.marrige(person2);
+			console.log(person2.spouse.name);
+			var a={};
+			a.prototype=Object.create(person1);
+			a.constructor=person;
+			a.name="suishufang";
+			console.log(a.constructor);
+		</script>
+	</body>
+</html>

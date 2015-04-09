@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script language="JavaScript" type="text/javascript;">
+			function range(min,max){
+				return {
+					min:function(){ return min;},
+					max:function(){ return max;	},
+					_iterator_:function() {
+						var val=Math.ceil(min);
+						return {
+							next:function(){
+								if(val>max) throw StopIteration;
+								return val++;
+							}
+						}
+					}
+				}
+			}
+			for (var i in range(1,10)) alert(i);
+//			var r=new range_(160,180);
+//			var s=r._iterator_();
+//			console.log(r.min());
+//			console.log(r.max);
+//			console.log(r instanceof Object);
+//			while(true){
+//				try{
+//					console.log(s.next());//写成:console.log(r._iterator_().next());就运行错误了
+//				}catch(e){
+//					if (e==StopIteration) break;
+//					else throw e;
+//				}
+//			}
+		</script>
+	</body>
+</html>

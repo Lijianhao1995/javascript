@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p>the firs P node</p>
+		</div>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById("box");
+				var newP=document.createElement("p");
+				var newPP=document.createElement("p");
+				box.appendChild(newP);
+				newP.innerHTML="the second P node";
+				newPP.innerHTML="the P before the second P node";
+				box.insertBefore(newPP,newP);//在newP之前插入newPP
+				var input_=document.createElement("<input type=\"button\" value=\"a button\" >");
+				box.appendChild(input_);
+			}
+		</script>
+	</body>
+</html>
